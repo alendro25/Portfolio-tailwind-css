@@ -34,3 +34,28 @@ layer.addEventListener("click", function () {
   navMenu.classList.add("hidden");
   layer.classList.add("hidden");
 });
+
+// DarkMode toggle
+const darkToggle = document.querySelector("#dark-toggle");
+const html = document.querySelector("html");
+
+darkToggle.addEventListener("click", function () {
+  if (darkToggle.checked) {
+    html.classList.add("dark");
+    localStorage.theme = "dark"; //Men-Set dark ke local storage agar ketika halaman di refresh tetap pd kondisi terakhir
+  } else {
+    html.classList.remove("dark");
+    localStorage.theme = "light"; //Men-Set light ke local storage agar ketika halaman di refresh tetap pd kondisi terakhir
+  }
+});
+
+// Pindahkan DarkMode toggle sesuai mode nya, kalau lagi di light ya di kiri kalau lagi di dark ya di kanan
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  darkToggle.checked = true;
+} else {
+  darkToggle.checked = false;
+}

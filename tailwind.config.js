@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html"],
+  darkMode: "class", //Menambahkan fitur dark mode
   theme: {
     container: {
       center: true,
